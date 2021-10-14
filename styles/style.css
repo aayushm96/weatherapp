@@ -175,6 +175,10 @@ h3 {
   transition: all 2s ease-in;
 }
 
+#date {
+  color: #e7e7eb;
+}
+
 .weather-nav-display {
   display: none;
   padding: 60px 12px;
