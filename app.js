@@ -32,17 +32,19 @@ searchBtn.addEventListener('click', (e) => {
 })
 
 
+const d = new Date();
+// const daay = d.getDay();
+// console.log(daay);
+const date = d.getDate();
+const days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+const x = days[d.getDay()];
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const month = months[d.getMonth()];
+todayDate.innerHTML = `${x},${date} ${month}`;
+
 const wSearch = document.getElementById('w-search').addEventListener('click', (e) => {
     const wInput = document.getElementById('w-input');
-    const d = new Date();
-    // const daay = d.getDay();
-    // console.log(daay);
-    const date = d.getDate();
-    const days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
-    const x = days[d.getDay()];
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    const month = months[d.getMonth()];
-    todayDate.innerHTML = `${x},${date} ${month}`;
+
     let city = wInput.value;
 
     e.preventDefault();
