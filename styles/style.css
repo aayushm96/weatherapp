@@ -171,8 +171,8 @@ h3 {
 
 #w-direction {
   color: #e7e7eb;
-  -webkit-transition: all 2s ease-in;
-  transition: all 2s ease-in;
+  -webkit-transition: all 5s ease-in;
+  transition: all 5s ease-in;
 }
 
 #date {
