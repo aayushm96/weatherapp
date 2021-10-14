@@ -48,9 +48,10 @@
     top: 10px;
     right: 10px;
 }
-
-.weather-display {
+.weather-box {
     padding: 18px 11px;
+}
+.weather-display {
     background-color: $secondary-bg;
 }
 
@@ -74,11 +75,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    // background-image: url(/Cloud-background.png);
-    // background-position: center center;
-    // background-size: contain;
-    // background-repeat: no-repeat;
+    // min-height: 100%;
+    background: linear-gradient(0deg, rgba(30, 33, 58, 0.8), rgba(30, 33, 58, 0.8)), url(/assets/Cloud-background.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     // background-color: #616475;
 }
 .weather-img-box {
@@ -148,7 +149,7 @@
 }
 .humidity-bar {
     width: 229px;
-    background-color: $font-primary-color;
+    background-color: $font-secondary-color;
     position: relative;
     height: 8px;
     border-radius: 80px;
