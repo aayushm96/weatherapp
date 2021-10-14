@@ -42,7 +42,7 @@ const wSearch = document.getElementById('w-search').addEventListener('click', (e
     const x = days[d.getDay()];
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const month = months[d.getMonth()];
-
+    todayDate.innerHTML = `${x},${date} ${month}`;
     let city = wInput.value;
 
     e.preventDefault();
@@ -62,7 +62,7 @@ const wSearch = document.getElementById('w-search').addEventListener('click', (e
             const newTemp = Math.floor(data.main.temp - 273);
             temp.innerHTML = `${newTemp}<span>°C</span>`;
 
-            todayDate.innerHTML = `${x},${date} ${month}`;
+
 
             const newIcon = data.weather[0].icon;
             icon.setAttribute('src', `https://openweathermap.org/img/wn/${newIcon}@2x.png`)
