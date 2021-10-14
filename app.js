@@ -79,10 +79,67 @@ const wSearch = document.getElementById('w-search').addEventListener('click', (e
             const newVisibilty = Math.floor((data.visibility) / 1609);
             visibility.innerHTML = `${newVisibilty}<span>miles</span>`;
 
-            pressure.innerHTML = `${data.main.pressure}<span>mb</span>`;
+            pressure.innerHTML = `${data.main.pressure}<span>hPa</span>`;
         });
 
     wInput.value = '';
     hide();
     // console.log(data.main);
 })
+
+
+const geolocation = document.getElementById('w-geolocation').addEventListener('click', function (e) {
+    const apiKey = 'b6291b4c6cf82a1db1adbdf33aad5d3f'
+
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showme);
+            // console.log(ele);
+        } else {
+            console.log('no GPS found');
+        }
+    }
+    function showme(ele) {
+        const x = ele.coords.latitude;
+        const y = ele.coords.longitude;
+        // console.log(x);
+        // console.log(y);
+        const api = `https://api.openweathermap.org/data/2.5/weather?lat=${x}&lon=${y}&appid=${apiKey}`;
+
+        fetch(api)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+
+
+                loc.innerHTML = data.name;
+
+                desc.innerHTML = data.weather[0].description;
+
+                const newTemp = Math.floor(data.main.temp - 273);
+                temp.innerHTML = `${newTemp}<span>°C</span>`;
+
+
+
+                const newIcon = data.weather[0].icon;
+                icon.setAttribute('src', `https://openweathermap.org/img/wn/${newIcon}@2x.png`)
+
+                wind.innerHTML = `${data.wind.speed}<span>mph</span>`;
+                const newDirection = data.wind.deg;
+                direction.style.transform = `rotate(${newDirection}deg)`;
+
+                humidity.innerHTML = `${data.main.humidity}<span>%</span>`;
+                humidityfill.style.width = `${data.main.humidity}%`
+
+                const newVisibilty = Math.floor((data.visibility) / 1609);
+                visibility.innerHTML = `${newVisibilty}<span>miles</span>`;
+
+                pressure.innerHTML = `${data.main.pressure}<span>hPa</span>`;
+            });
+    }
+    getLocation();
+
+
+
+});
