@@ -120,8 +120,6 @@ const geolocation = document.getElementById('w-geolocation').addEventListener('c
                 const newTemp = Math.floor(data.main.temp - 273);
                 temp.innerHTML = `${newTemp}<span>°C</span>`;
 
-
-
                 const newIcon = data.weather[0].icon;
                 icon.setAttribute('src', `https://openweathermap.org/img/wn/${newIcon}@2x.png`)
 
