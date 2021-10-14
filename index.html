@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>WeatherApp</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <section class="weather-nav-display weather-nav-show" id="mobile-nav">
+            <form class="nav-form">
+                <input type="text" placeholder="search location" id="w-input" autocomplete="off">
+                <button type="submit" id="w-search">Search</button>
+            </form>
+            <a href="#" id="close-btn"><i class="fas fa-times-circle fa-2x"></i></a>
+            <ul class="history">
+                <!-- <li>london</li>
+                <li>london</li>
+                <li>london</li> -->
+            </ul>
+        </section>
+
+        <section class="weather-display" id="hero">
+            <div class="weather-box">
+                <div class="weather-location">
+                    <a href="#" id="search-btn">Search the city</a>
+                </div>
+                <div class="weather-geolocation">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+            </div>
+            <div class="weather-details">
+                <div class="weather-img-box">
+                    <img id="w-icon" src="/assets/Shower.png" alt="">
+                </div>
+                <h1 id="w-temp"></h1>
+                <h2 id="w-desc"></h2>
+                <div class="weather-last-box text-center">
+                    <h3>Today • <span id="date"></span></h3>
+                    <h3><i class="fas fa-map-marker-alt"></i>
+                        <h3 id="w-location"></h3>
+                    </h3>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section class="weather-unit-display"></section>
+
+        <section class="forcast-display">
+            <div class="forcast-card">
+                <p>Tomorrow</p>
+                <img src="/Shower.png" alt="">
+                <div class="temp-box">
+                    <p>16 <span>°C</span></p>
+                    <p>11 <span>°C</span></p>
+                </div>
+            </div>
+            <div class="forcast-card">
+                <p>Tomorrow</p>
+                <img src="/Shower.png" alt="">
+                <div class="temp-box">
+                    <p>16 <span>°C</span></p>
+                    <p>11 <span>°C</span></p>
+                </div>
+            </div>
+            <div class="forcast-card">
+                <p>Tomorrow</p>
+                <img src="/Shower.png" alt="">
+                <div class="temp-box">
+                    <p>16 <span>°C</span></p>
+                    <p>11 <span>°C</span></p>
+                </div>
+            </div>
+            <div class="forcast-card">
+                <p>Tomorrow</p>
+                <img src="/Shower.png" alt="">
+                <div class="temp-box">
+                    <p>16 <span>°C</span></p>
+                    <p>11 <span>°C</span></p>
+                </div>
+            </div>
+            <div class="forcast-card">
+                <p>Tomorrow</p>
+                <img src="/Shower.png" alt="">
+                <div class="temp-box">
+                    <p>16 <span>°C</span></p>
+                    <p>11 <span>°C</span></p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="detailed-display">
+            <h1>Today’s Hightlights</h1>
+            <div class="highlight-box">
+                <div class="highlight">
+                    <p>Wind Status</p>
+                    <h1 id="w-wind"></h1>
+                    <p><i id="w-direction" class="fas fa-location-arrow"></i></p>
+                </div>
+                <div class="highlight">
+                    <p>Humidity</p>
+                    <h1 id="w-humidity"></h1>
+                    <div class="humidity-numbers">
+                        <div>0</div>
+                        <div>50</div>
+                        <div>100</div>
+                    </div>
+                    <div class="humidity-bar">
+                        <div class="humidity-fill" id="w-humidity-fill"></div>
+                    </div>
+                    <!-- <div class="humidity-percent">
+                        <div>%</div>
+                    </div> -->
+
+                </div>
+                <div class="highlight">
+                    <p>Visibility</p>
+                    <h1 id="w-visibility"></h1>
+                </div>
+                <div class="highlight">
+                    <p>Air Pressure</p>
+                    <h1 id="w-pressure"></h1>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <script src="/app.js"></script>
+</body>
+
+</html>
