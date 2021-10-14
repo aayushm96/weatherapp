@@ -38,9 +38,9 @@ const d = new Date();
 const date = d.getDate();
 const days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 const x = days[d.getDay()];
-const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
 const month = months[d.getMonth()];
-todayDate.innerHTML = `${x},${date} ${month}`;
+todayDate.innerHTML = `${x}, ${date} ${month}`;
 
 const wSearch = document.getElementById('w-search').addEventListener('click', (e) => {
     const wInput = document.getElementById('w-input');
