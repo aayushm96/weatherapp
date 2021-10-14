@@ -176,6 +176,8 @@ h3 {
 }
 
 #date {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
   color: #e7e7eb;
 }
 
