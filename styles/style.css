@@ -400,7 +400,7 @@ h3 {
 }
 
 .forcast-display {
-  width: auto;
+  width: 70%;
   margin: 0 auto;
   width: -webkit-fit-content;
   width: -moz-fit-content;
