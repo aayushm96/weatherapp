@@ -141,7 +141,7 @@ const geolocation = document.getElementById('w-geolocation').addEventListener('c
                 const newVisibilty = Math.floor((data.visibility) / 1609);
                 visibility.innerHTML = `${newVisibilty} <span>miles</span>`;
 
-                pressure.innerHTML = `${data.main.pressure} <span>hPa</span>`;
+                pressure.innerHTML = `${data.main.pressure}<span>hPa</span>`;
             });
     }
     getLocation();

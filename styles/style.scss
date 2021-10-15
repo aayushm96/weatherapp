@@ -99,7 +99,7 @@
 }
 .weather-unit-display {
     background-color: $primary-bg;
-    padding: 42px 123px;
+    // padding: 42px 123px;
     height: fit-content;
     // height: 40px;
     .unit {
@@ -146,7 +146,8 @@
 }
 .forcast-display {
     margin: 0 auto;
-    padding: 52px 100px;
+    // padding: 52px 100px;
+
     background-color: $primary-bg;
 }
 .forcast-card {
@@ -169,8 +170,7 @@
     }
 }
 .detailed-display {
-    margin: 0 auto;
-    padding: 20px 123px;
+    // padding: 20px 123px;
     background-color: $primary-bg;
     h1 {
         text-align: left;
@@ -181,7 +181,7 @@
 }
 
 .highlight {
-    padding: 26px;
+    padding: 16px;
     background-color: $secondary-bg;
 }
 
@@ -207,9 +207,8 @@
         font-size: 12px;
         font-weight: 700;
         width: 10px;
-        height: 14px;
-        right: 0px;
-        bottom: -15px;
+        height: 100%;
+        right: -15px;
         color: $font-secondary-color;
     }
 }
