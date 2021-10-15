@@ -1,13 +1,11 @@
 @media screen and (max-width: 1200px) {
     .container {
-        grid-template-columns: 1fr;
-        grid-template-rows: 100vh auto auto;
-        height: auto;
-        width: auto;
+        display: block;
+        grid-template-columns: none;
+        grid-template-rows: none;
     }
     .weather-display {
-        grid-row: 1;
-        // display: block;
+        display: block;
         height: 100vh;
     }
     .weather-unit-display {
@@ -18,11 +16,14 @@
         justify-content: space-evenly;
     }
     .highlight-box {
-        grid-template-columns: 328px;
-        grid-template-rows: 200px auto;
-        gap: 48px;
+        display: block;
+        grid-template-columns: none;
+        grid-template-rows: none;
+    }
+    .highlight {
+        margin-bottom: 48px;
     }
     .detailed-display {
-        padding-bottom: 137px;
+        padding: 50px;
     }
 }

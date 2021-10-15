@@ -191,27 +191,27 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 229px;
+    width: 70%;
     color: $font-secondary-color;
     margin-bottom: 5px;
     font-size: 12px;
     font-weight: 700;
 }
 .humidity-bar {
-    width: 229px;
+    width: 70%;
     background-color: $font-secondary-color;
     position: relative;
     height: 8px;
     border-radius: 80px;
     &::after {
-        position: relative;
+        position: absolute;
         content: "%";
         font-size: 12px;
         font-weight: 700;
         width: 10px;
         height: 14px;
-        right: -219px;
-        bottom: -6px;
+        right: 0px;
+        bottom: -15px;
         color: $font-secondary-color;
     }
 }
