@@ -105,6 +105,7 @@
     .unit {
         background: $primary-bg;
         input {
+            cursor: pointer;
             position: relative;
             appearance: none;
             margin-right: 0.5rem;

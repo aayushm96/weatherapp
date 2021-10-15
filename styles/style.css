@@ -370,6 +370,7 @@ h3 {
 }
 
 .weather-unit-display .unit input {
+  cursor: pointer;
   position: relative;
   -webkit-appearance: none;
      -moz-appearance: none;

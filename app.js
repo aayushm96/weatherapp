@@ -36,6 +36,8 @@ searchBtn.addEventListener('click', (e) => {
     hero.style.display = 'none';
 
 })
+const forcast = document.querySelectorAll('.forcast-display');
+
 
 
 const d = new Date();
@@ -48,6 +50,9 @@ const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", 
 const month = months[d.getMonth()];
 todayDate.innerHTML = `${x}, ${date} ${month}`;
 
+
+
+// start custom city search
 const wSearch = document.getElementById('w-search').addEventListener('click', (e) => {
     const wInput = document.getElementById('w-input');
 
@@ -68,7 +73,7 @@ const wSearch = document.getElementById('w-search').addEventListener('click', (e
             desc.innerHTML = data.weather[0].description;
 
             const newTemp = Math.floor(data.main.temp - 273);
-            temp.innerHTML = `${newTemp}<span>°C</span>`;
+            temp.innerHTML = `${newTemp}<span class="new-unit">°C</span>`;
 
 
 
@@ -94,7 +99,7 @@ const wSearch = document.getElementById('w-search').addEventListener('click', (e
     // console.log(data.main);
 })
 
-
+//start current city search
 const geolocation = document.getElementById('w-geolocation').addEventListener('click', function (e) {
     const apiKey = 'b6291b4c6cf82a1db1adbdf33aad5d3f'
 
@@ -125,7 +130,7 @@ const geolocation = document.getElementById('w-geolocation').addEventListener('c
                 desc.innerHTML = data.weather[0].description;
 
                 const newTemp = Math.floor(data.main.temp - 273);
-                temp.innerHTML = `${newTemp}<span>°C</span>`;
+                temp.innerHTML = `${newTemp}<span class="new-unit">°C</span>`;
 
                 const newIcon = data.weather[0].icon;
                 icon.setAttribute('src', `https://openweathermap.org/img/wn/${newIcon}@2x.png`)
@@ -142,6 +147,28 @@ const geolocation = document.getElementById('w-geolocation').addEventListener('c
                 visibility.innerHTML = `${newVisibilty} <span>miles</span>`;
 
                 pressure.innerHTML = `${data.main.pressure}<span>hPa</span>`;
+
+
+                test2.addEventListener('click', (e) => {
+
+                    // console.log(e.target);
+
+                    if (e.target.classList.contains('farenheit')) {
+                        // console.log('newTemp');
+                        const fahhiet = (newTemp * (9 / 5)) + 32;
+                        temp.innerHTML = `${fahhiet}<span>°F</span>`
+                        Array.from(allunits).forEach(unit => {
+                            unit.textContent = '°F';
+                        })
+                    }
+                    else {
+                        temp.innerHTML = `${newTemp}<span class="new-unit">°C</span>`;
+                        Array.from(allunits).forEach(unit => {
+                            unit.textContent = '°C';
+                        })
+                    }
+
+                });
             });
     }
     getLocation();
@@ -150,10 +177,18 @@ const geolocation = document.getElementById('w-geolocation').addEventListener('c
 
 });
 
-const neww = 'https://api.openweathermap.org/data/2.5/forecast?q=lucknow&appid=b6291b4c6cf82a1db1adbdf33aad5d3f'
-fetch(neww)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-    });
+// const neww = 'https://api.openweathermap.org/data/2.5/forecast?q=lucknow&appid=b6291b4c6cf82a1db1adbdf33aad5d3f'
+// fetch(neww)
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log(data)
+//     });
 
+
+
+// const test1 = document.getElementById('forecast');
+const test2 = document.getElementById('unit-change');
+
+// console.log();
+const allunits = document.getElementsByClassName('new-unit');
+console.log(allunits);
