@@ -1,5 +1,5 @@
 # weatherapp
-responsive mordern UI weather dashboard to display weather using public weather API built using pure vanilla java-script SCSS and HTML.It has following features
+Responsive mordern UI weather dashboard to display weather using public weather API built using pure vanilla java-script SCSS and HTML.It has following features
 -unit chnage Degree Celsius / Farenhiet
 -5 day forecast
 -geolocated weather display
