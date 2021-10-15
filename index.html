@@ -61,7 +61,13 @@
 
 
 
-        <section class="weather-unit-display"></section>
+
+        <section class="weather-unit-display">
+            <form class="unit">
+                <input type="radio" name="unit" checked>
+                <input type="radio" name="unit">
+            </form>
+        </section>
 
         <section class="forcast-display">
             <div class="forcast-card">
@@ -113,7 +119,7 @@
                 <div class="highlight">
                     <p>Wind Status</p>
                     <h1 id="w-wind"></h1>
-                    <div><i id="w-direction" class="fas fa-arrow-circle-up"></i></div>
+                    <div id="w-degree"><i id="w-direction" class="fas fa-arrow-circle-up"></i></div>
                 </div>
                 <div class="highlight">
                     <p>Humidity</p>
@@ -141,6 +147,7 @@
                 </div>
             </div>
         </section>
+
 
     </div>
     <script src="/app.js"></script>

@@ -1,0 +1,28 @@
+@media screen and (max-width: 1200px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 100vh auto auto;
+        height: auto;
+        width: auto;
+    }
+    .weather-display {
+        grid-row: 1;
+        // display: block;
+        height: 100vh;
+    }
+    .weather-unit-display {
+        display: none;
+    }
+    .forcast-display {
+        padding: 52px 55px;
+        justify-content: space-evenly;
+    }
+    .highlight-box {
+        grid-template-columns: 328px;
+        grid-template-rows: 200px auto;
+        gap: 48px;
+    }
+    .detailed-display {
+        padding-bottom: 137px;
+    }
+}

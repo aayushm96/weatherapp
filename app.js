@@ -16,6 +16,8 @@ const visibility = document.getElementById('w-visibility');
 const pressure = document.getElementById('w-pressure');
 
 const nav = document.getElementById('mobile-nav');
+const hero = document.getElementById('hero');
+
 
 
 closeBtn.addEventListener('click', hide);
@@ -23,12 +25,16 @@ hide();
 function hide() {
     if (nav.classList.contains('weather-nav-show')) {
         nav.classList.remove('weather-nav-show')
+        hero.style.display = 'grid';
+
     }
 }
 
 
 searchBtn.addEventListener('click', (e) => {
     nav.classList.add('weather-nav-show');
+    hero.style.display = 'none';
+
 })
 
 
@@ -72,6 +78,7 @@ const wSearch = document.getElementById('w-search').addEventListener('click', (e
             wind.innerHTML = `${data.wind.speed}<span>mph</span>`;
             const newDirection = data.wind.deg;
             direction.style.transform = `rotate(${newDirection}deg)`;
+
 
             humidity.innerHTML = `${data.main.humidity}<span>%</span>`;
             humidityfill.style.width = `${data.main.humidity}%`
@@ -123,17 +130,18 @@ const geolocation = document.getElementById('w-geolocation').addEventListener('c
                 const newIcon = data.weather[0].icon;
                 icon.setAttribute('src', `https://openweathermap.org/img/wn/${newIcon}@2x.png`)
 
-                wind.innerHTML = `${data.wind.speed}<span>mph</span>`;
+                wind.innerHTML = `${data.wind.speed} <span>mph</span>`;
                 const newDirection = data.wind.deg;
                 direction.style.transform = `rotate(${newDirection}deg)`;
 
-                humidity.innerHTML = `${data.main.humidity}<span>%</span>`;
+
+                humidity.innerHTML = `${data.main.humidity} <span>%</span>`;
                 humidityfill.style.width = `${data.main.humidity}%`
 
                 const newVisibilty = Math.floor((data.visibility) / 1609);
-                visibility.innerHTML = `${newVisibilty}<span>miles</span>`;
+                visibility.innerHTML = `${newVisibilty} <span>miles</span>`;
 
-                pressure.innerHTML = `${data.main.pressure}<span>hPa</span>`;
+                pressure.innerHTML = `${data.main.pressure} <span>hPa</span>`;
             });
     }
     getLocation();
@@ -141,3 +149,11 @@ const geolocation = document.getElementById('w-geolocation').addEventListener('c
 
 
 });
+
+const neww = 'https://api.openweathermap.org/data/2.5/forecast?q=lucknow&appid=b6291b4c6cf82a1db1adbdf33aad5d3f'
+fetch(neww)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+    });
+
