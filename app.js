@@ -36,7 +36,11 @@ searchBtn.addEventListener('click', (e) => {
     hero.style.display = 'none';
 
 })
-const forcast = document.querySelectorAll('.forcast-display');
+// const forcast = document.getElementById('forecast');
+// const p = document.getElementsByClassName('forcast-card');
+// const pl = p.parentElement;
+// console.log(pl);
+
 
 
 
@@ -50,6 +54,11 @@ const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", 
 const month = months[d.getMonth()];
 todayDate.innerHTML = `${x}, ${date} ${month}`;
 
+const test2 = document.getElementById('unit-change');
+
+// console.log();
+const allunits = document.getElementsByClassName('new-unit');
+console.log(allunits);
 
 
 // start custom city search
@@ -61,38 +70,81 @@ const wSearch = document.getElementById('w-search').addEventListener('click', (e
     e.preventDefault();
     const apiKey = 'b6291b4c6cf82a1db1adbdf33aad5d3f'
 
-    const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+    const api = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
 
     fetch(api)
         .then(response => response.json())
         .then(data => {
             console.log(data);
 
-            loc.innerHTML = data.name;
+            loc.innerHTML = data.city.name;
 
-            desc.innerHTML = data.weather[0].description;
+            desc.innerHTML = data.list[0].weather[0].description;
 
-            const newTemp = Math.floor(data.main.temp - 273);
+            const newTemp = converttoCelsius(data.list[0].main.temp);
             temp.innerHTML = `${newTemp}<span class="new-unit">°C</span>`;
 
 
 
-            const newIcon = data.weather[0].icon;
+            const newIcon = data.list[0].weather[0].icon;
             icon.setAttribute('src', `https://openweathermap.org/img/wn/${newIcon}@2x.png`)
 
-            wind.innerHTML = `${data.wind.speed}<span>mph</span>`;
-            const newDirection = data.wind.deg;
+            wind.innerHTML = `${data.list[0].wind.speed}<span>mph</span>`;
+            const newDirection = data.list[0].wind.deg;
             direction.style.transform = `rotate(${newDirection}deg)`;
 
 
-            humidity.innerHTML = `${data.main.humidity}<span>%</span>`;
-            humidityfill.style.width = `${data.main.humidity}%`
+            humidity.innerHTML = `${data.list[0].main.humidity}<span>%</span>`;
+            humidityfill.style.width = `${data.list[0].main.humidity}%`
 
-            const newVisibilty = Math.floor((data.visibility) / 1609);
+            const newVisibilty = Math.floor((data.list[0].visibility) / 1609);
             visibility.innerHTML = `${newVisibilty}<span>miles</span>`;
 
-            pressure.innerHTML = `${data.main.pressure}<span>hPa</span>`;
+            pressure.innerHTML = `${data.list[0].main.pressure}<span>hPa</span>`;
+
+            const myElement = document.getElementById('forecast');
+            // console.log();
+            const newmyelements = myElement.children;
+
+            Array.from(newmyelements).forEach((ele, i) => {
+                ele.children[0].innerHTML = `${i + 2}-day`;
+                ele.children[1].setAttribute('src', `https://openweathermap.org/img/wn/${data.list[0].weather[0].icon}@2x.png`);
+                ele.children[2].innerHTML = `<p>${converttoCelsius(data.list[i + 1].main.temp_max)} <span class="new-unit">°C</span></p>
+                    <p>${converttoCelsius(data.list[i + 1].main.temp_min)}<span class="new-unit">°C</span></p>`
+            })
+
+            test2.addEventListener('click', (e) => {
+                if (e.target.classList.contains('farenheit')) {
+                    // console.log('newTemp');
+                    const fahhiet = converttoFahrenheit(newTemp);
+                    temp.innerHTML = `${fahhiet}<span>°F</span>`
+                    Array.from(allunits).forEach(unit => {
+                        unit.textContent = '°F';
+                    })
+                    Array.from(newmyelements).forEach((ele, i) => {
+                        // ele.children[0].innerHTML = `${i + 2}-day`;
+                        // ele.children[1].setAttribute('src', `https://openweathermap.org/img/wn/${data.list[0].weather[0].icon}@2x.png`);
+                        ele.children[2].innerHTML = `<p>${converttoFahrenheit(data.list[i + 1].main.temp_max)} <span class="new-unit">°F</span></p>
+                    <p>${converttoFahrenheit(data.list[i + 1].main.temp_min)}<span class="new-unit">°F</span></p>`
+                    })
+                }
+                else {
+                    temp.innerHTML = `${newTemp}<span class="new-unit">°C</span>`;
+                    Array.from(allunits).forEach(unit => {
+                        unit.textContent = '°C';
+                    })
+                    Array.from(newmyelements).forEach((ele, i) => {
+                        // ele.children[0].innerHTML = `${i + 2}-day`;
+                        // ele.children[1].setAttribute('src', `https://openweathermap.org/img/wn/${data.list[0].weather[0].icon}@2x.png`);
+                        ele.children[2].innerHTML = `<p>${converttoCelsius(data.list[i + 1].main.temp_max)} <span class="new-unit">°C</span></p>
+                    <p>${converttoCelsius(data.list[i + 1].main.temp_min)}<span class="new-unit">°C</span></p>`
+                    })
+
+                }
+
+            });
         });
+
 
     wInput.value = '';
     hide();
@@ -129,7 +181,7 @@ const geolocation = document.getElementById('w-geolocation').addEventListener('c
 
                 desc.innerHTML = data.weather[0].description;
 
-                const newTemp = Math.floor(data.main.temp - 273);
+                const newTemp = converttoCelsius(data.main.temp);
                 temp.innerHTML = `${newTemp}<span class="new-unit">°C</span>`;
 
                 const newIcon = data.weather[0].icon;
@@ -155,7 +207,7 @@ const geolocation = document.getElementById('w-geolocation').addEventListener('c
 
                     if (e.target.classList.contains('farenheit')) {
                         // console.log('newTemp');
-                        const fahhiet = (newTemp * (9 / 5)) + 32;
+                        const fahhiet = converttoFahrenheit(newTemp);
                         temp.innerHTML = `${fahhiet}<span>°F</span>`
                         Array.from(allunits).forEach(unit => {
                             unit.textContent = '°F';
@@ -177,18 +229,25 @@ const geolocation = document.getElementById('w-geolocation').addEventListener('c
 
 });
 
-// const neww = 'https://api.openweathermap.org/data/2.5/forecast?q=lucknow&appid=b6291b4c6cf82a1db1adbdf33aad5d3f'
-// fetch(neww)
-//     .then(response => response.json())
-//     .then(data => {
-//         console.log(data)
-//     });
+const neww = 'https://api.openweathermap.org/data/2.5/forecast?q=lucknow&appid=b6291b4c6cf82a1db1adbdf33aad5d3f'
+fetch(neww)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+    });
 
 
 
 // const test1 = document.getElementById('forecast');
-const test2 = document.getElementById('unit-change');
 
-// console.log();
-const allunits = document.getElementsByClassName('new-unit');
-console.log(allunits);
+
+
+function converttoCelsius(celsius) {
+    const newCelsius = Math.floor(celsius - 273);
+    return newCelsius;
+}
+
+function converttoFahrenheit(f) {
+    const newFahrenheit = Math.floor((f * (9 / 5)) + 32);
+    return newFahrenheit;
+}
