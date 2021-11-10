@@ -36,17 +36,11 @@ searchBtn.addEventListener('click', (e) => {
     hero.style.display = 'none';
 
 })
-// const forcast = document.getElementById('forecast');
-// const p = document.getElementsByClassName('forcast-card');
-// const pl = p.parentElement;
-// console.log(pl);
 
 
 
 
 const d = new Date();
-// const daay = d.getDay();
-// console.log(daay);
 const date = d.getDate();
 const days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 const x = days[d.getDay()];
@@ -56,7 +50,7 @@ todayDate.innerHTML = `${x}, ${date} ${month}`;
 
 const test2 = document.getElementById('unit-change');
 
-// console.log();
+
 const allunits = document.getElementsByClassName('new-unit');
 console.log(allunits);
 
@@ -144,14 +138,13 @@ const wSearch = document.getElementById('w-search').addEventListener('click', (e
 
             });
         });
-
-
     wInput.value = '';
     hide();
     // console.log(data.main);
 })
 
-//start current city search
+//start current city search using GPS of the device
+
 const geolocation = document.getElementById('w-geolocation').addEventListener('click', function (e) {
     const apiKey = 'b6291b4c6cf82a1db1adbdf33aad5d3f'
 
@@ -224,22 +217,7 @@ const geolocation = document.getElementById('w-geolocation').addEventListener('c
             });
     }
     getLocation();
-
-
-
 });
-
-const neww = 'https://api.openweathermap.org/data/2.5/forecast?q=lucknow&appid=b6291b4c6cf82a1db1adbdf33aad5d3f'
-fetch(neww)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-    });
-
-
-
-// const test1 = document.getElementById('forecast');
-
 
 
 function converttoCelsius(celsius) {
